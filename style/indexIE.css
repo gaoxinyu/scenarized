@@ -1,0 +1,40 @@
+/* ie 下的bug修复 ie7及一下版本 */
+.filter-box-list{
+	z-index:2;
+}
+.filter-box-list .box-list-ul{
+	border:1px solid #eee;
+}
+.list-pro .pro-price{
+	background:#ff5c3f;
+}
+
+
+/* 大屏幕 for ie  w1200 */
+.w1200 .shop-cate-sub,
+.w1200 .shop-col-title,
+.w1200 .shop-col-filter,
+.w1200 .shop-col-list{
+	width:1200px;
+}
+.w1200 .cate-sub-list{
+	width:975px;
+}
+.w1200 .sub-list-slider{
+	width:975px;
+}
+.w1200 .shop-footer-content{
+	width:1160px;
+}
+.w1200 .footer-content-wrap{
+	width:1190px;
+}
+.w1200 .shop-col-slider  .slider-list .list-pro{
+	margin-right:22px;
+}
+.w1200 .footer-content-wrap{
+	width:1190px;
+}
+.w1200 .footer-content-cate{
+	margin-right:33px;
+}
