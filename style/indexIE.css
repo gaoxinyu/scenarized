@@ -14,7 +14,8 @@
 .w1200 .shop-cate-sub,
 .w1200 .shop-col-title,
 .w1200 .shop-col-filter,
-.w1200 .shop-col-list{
+.w1200 .shop-col-list,
+.w1200 .shop-col-list .shop-col-slider{
 	width:1200px;
 }
 .w1200 .cate-sub-list{
@@ -32,6 +33,13 @@
 .w1200 .shop-col-slider  .slider-list .list-pro{
 	margin-right:22px;
 }
+.w1200 .shop-col-list .slider-left{
+	left:-10px;
+}
+.w1200 .shop-col-list .slider-right{
+	right:-10px;
+}	
+
 .w1200 .footer-content-wrap{
 	width:1190px;
 }
