@@ -73,7 +73,7 @@ body{
 }
 .shop-header-info{
 	position:relative;
-	z-index:1;
+	/*z-index:1;*/
 	width:400px;
 	margin:45px auto 0;
 }
@@ -312,10 +312,10 @@ body{
 	background:#ff5c3f;
 }
 .shop-col-list .slider-left{
-	left:-10px;
+	left:0;
 }
 .shop-col-list .slider-right{
-	right:-10px;
+	right:0;
 }
 .shop-col-list .un{
 	background:#aaa;
@@ -344,6 +344,17 @@ body{
 }
 .shop-col-list .slider-right i{
 	background-position:-17px -29px;
+}
+.shop-col-list .slider-right i.text{
+	width:30px;
+	height:36px;
+	line-height:18px;
+	margin-top:-18px;
+	margin-left:-15px;
+	background:none;
+	color:#fff;
+	font-style:normal;
+	text-align:center;
 }
 
 .shop-col-list .shop-col-slider .slider-list{
@@ -387,6 +398,7 @@ body{
 	margin:10px 0 0;
 	line-height:18px;
 	font-weight:500;
+	font-size:12px;
 }
 .list-pro .pro-name a{
 	color:#666;
@@ -582,6 +594,12 @@ a.content-cate-list:hover{
 	.shop-col-slider  .slider-list .list-pro{
 		margin-right:22px;
 	}
+	.shop-col-list .slider-left{
+		left:-10px;
+	}
+	.shop-col-list .slider-right{
+		right:-10px;
+	}	
 	.footer-content-wrap{
 		width:1190px;
 	}
