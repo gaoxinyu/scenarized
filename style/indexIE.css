@@ -1,4 +1,12 @@
 /* ie 下的bug修复 ie7及一下版本 */
+
+.cate-sub-list .slider-list li{
+	_border-color:#fff;
+}
+.filter-box-type span{
+	_line-height:0;
+	font-size:0;
+}
 .filter-box-list{
 	z-index:2;
 }
@@ -8,7 +16,9 @@
 .list-pro .pro-price{
 	background:#ff5c3f;
 }
-
+.scenarized-shop-cate{
+	border-bottom:1px solid #ccc;
+}
 
 /* 大屏幕 for ie  w1200 */
 .w1200 .shop-cate-sub,

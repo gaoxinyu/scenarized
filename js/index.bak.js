@@ -1,12 +1,14 @@
 var isHandle = {
     lowerIE8: function() {
         var agent = navigator.userAgent.toLowerCase();
+        //var ieAgent = /msie\s*(\d)/.exec(navigator.userAgent.toLowerCase());
         if (agent.indexOf("msie") < 0) return false;
         var ieAgent = agent.split("msie");
         return parseInt(ieAgent[1].split(";")[0]) <= 8;
     },
     isIE6:function(){
     	var agent = navigator.userAgent.toLowerCase();
+        //var ieAgent = /msie\s*(\d)/.exec(navigator.userAgent.toLowerCase());
         if (agent.indexOf("msie") < 0) return false;
         var ieAgent = agent.split("msie");
         return parseInt(ieAgent[1].split(";")[0]) <= 6;
@@ -46,6 +48,7 @@ slider.prototype = {
 		this.chs.each(function(){
 			k.push($(this).outerWidth(true))
 		})
+		console.log(k)
 		for(var i = 0; i < this.len; i++){
 			w+=k[i];
 		}
@@ -62,6 +65,9 @@ slider.prototype = {
 				break;
 		}
 
+		// console.log("move step = "+self.step,self.slw,this.objw);
+
+		
 		// 箭头
 		if(this.goes == 0){
 			this.ctrL.addClass("un");
@@ -112,12 +118,16 @@ slider.prototype = {
 	},
 	setTrigger:function(){
 		var self = this;
+		// console.log(this.setTri)
 		if(this.setTri){
 			this.trigger = this.obj.siblings('.slider-trigger');
 			if(this.trigger.children().length > 0){
+				// console.log("里:"+this.step);
 				this.trigger.children().remove();
 			}
+			// console.log("外:"+this.step);
 			if(this.step == 1){
+				// console.log("只有一个了");
 				return false;
 			}
 			for(var i = 0; i < this.step; i++){
@@ -155,10 +165,12 @@ slider.prototype = {
 	goFun:function(direction,index){
 		var self = this;
 		this.direction = direction;
+		// console.log("before:"+self.goes)
 		switch(this.direction){
 			case "left":
 				if(self.goes <= 0){
 					self.goes = 0;
+					// console.log("toL over");
 					return false;
 				}
 				self.ctrR.removeClass('un');
@@ -170,10 +182,12 @@ slider.prototype = {
 					self.flag = false;
 					self.s = 0;
 					if(index){
+						// console.log("有index")
 						self.goes = index -1
 					}else{
 						self.goes = self.goes - 1
 					}
+					// console.log("prev goes"+ self.goes);
 					if(self.types == "nums"){
 						self.chsw = self.chs.outerWidth(true);
 						self.objw = self.nums * self.chsw;
@@ -196,6 +210,7 @@ slider.prototype = {
 					if(self.locations){
 						self.ctrR.attr("href",self.locations);
 					}
+					// console.log("toR over");
 					return false;
 				}
 				self.ctrL.removeClass("un");
@@ -203,6 +218,7 @@ slider.prototype = {
 					self.flag = false;
 					
 					if(index){
+						// console.log("有index")
 						self.goes = index -1
 					}else{
 						self.goes = self.goes + 1
@@ -213,6 +229,7 @@ slider.prototype = {
 						self.tric.eq(self.goes).addClass("act").siblings().removeClass("act");
 					}
 					self.s = self.objw * self.goes;
+					// console.log("next goes"+ self.goes);
 					if(self.goes == self.step-1){
 						q = self.slw - self.objw * self.step;
 						self.s += q;
@@ -402,6 +419,9 @@ $(function(){
 				var ht = $(this).html();
 				p.html(ht);
 				list.hide();
+				// if(!$(this).hasClass("act")){
+				// 	$(this).addClass("act").siblings().removeClass("act");
+				// }
 				if($(this).children().hasClass("down")){
 					$(this).children().addClass("up").removeClass("down");
 				}else{
