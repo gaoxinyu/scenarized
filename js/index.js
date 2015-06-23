@@ -414,4 +414,13 @@ $(function(){
 			}
 		});
 	})
+
+	// 分享 hover for ie6
+	if(isHandle.isIE6()){
+		$(".share-col").hover(function(){
+			$(this).addClass("cur")
+		},function(){
+			$(this).removeClass("cur");
+		});
+	}
 })
