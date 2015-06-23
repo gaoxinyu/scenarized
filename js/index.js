@@ -163,8 +163,8 @@ slider.prototype = {
 				}
 				self.ctrR.removeClass('un');
 				if(self.locations){
-					self.ctrR.attr("href","javascript:;");
-					self.ctrR.children().html("").removeClass("text");
+					self.ctrR.attr("href","javascript:;").removeClass("text");
+					self.ctrR.children().html("");
 				}
 				if(self.flag){				
 					self.flag = false;
