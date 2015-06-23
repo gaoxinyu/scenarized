@@ -154,6 +154,7 @@ body{
 	padding:0 8px 0 12px;
 	line-height:28px;
 	font-size:18px;
+	font-weight:500;
 	border-left:4px solid #ff5c3f;
 	background:url(../img/cate-title-bg.png) repeat-x 0 0;
 }
@@ -219,14 +220,15 @@ body{
 
 /* scenarized-shop-col */
 .scenarized-shop-col{
-	padding-top:20px;
+	padding-top:40px;
 	background:#f8f8f8;
 }
 .shop-col-title{
 	width:980px;
 	margin:0 auto 20px;
+	padding-bottom:5px;
 	text-align:center;
-	font:700 18px/35px 'microsoft yahei';
+	font:500 18px/30px 'microsoft yahei';
 	color:#333;
 	background:url(../img/col-title-bg.png) no-repeat center bottom;
 }
@@ -341,7 +343,7 @@ body{
 	position:relative;
 	width:980px;
 	margin:10px auto 0;
-	padding-bottom:30px;
+	padding-bottom:25px;
 }
 .shop-col-list .slider-left,
 .shop-col-list .slider-right{
@@ -351,6 +353,10 @@ body{
 	width:40px;
 	height:40px;
 	margin-top:-20px;
+	background:#aaa;
+}
+.shop-col-list .slider-left:hover,
+.shop-col-list .slider-right:hover{
 	background:#ff5c3f;
 }
 .shop-col-list .slider-left{
@@ -360,8 +366,11 @@ body{
 	right:0;
 }
 .shop-col-list .un{
-	background:#aaa;
+	background:#ddd;
 	cursor:default;
+}
+.shop-col-list .un:hover{
+	background:#ddd;
 }
 .shop-col-list .shop-col-slider{
 	position:relative;
@@ -387,7 +396,10 @@ body{
 .shop-col-list .slider-right i{
 	background-position:-17px -29px;
 }
-.shop-col-list .slider-right i.text{
+.shop-col-list .slider-right.text{
+	background:#ff5c3f;
+}
+.shop-col-list .slider-right.text i{
 	width:30px;
 	height:36px;
 	line-height:18px;
@@ -436,7 +448,6 @@ body{
 }
 .list-pro .pro-name{
 	height:18px;
-	padding:0 10px;
 	margin:10px 0 0;
 	line-height:18px;
 	font-weight:500;
@@ -486,7 +497,10 @@ body{
 	color:#ff5c3f;
 	border:1px solid #ff5c3f;
 }
-
+.list-pro .add-cart:hover{
+	background:#ff5c3f;
+	color:#fff!important;
+}
 .shop-col-list .slider-trigger{
 	position:absolute;
 	left:50%;
@@ -517,7 +531,7 @@ body{
 	width:100%;
 	height:52px;
 	text-align:center;
-	font:700 18px/52px 'microsoft yahei';
+	font:500 18px/52px 'microsoft yahei';
 	color:#333;
 	background:url(../img/footer-title-bg.png) no-repeat center top;
 }
@@ -549,6 +563,7 @@ body{
 	overflow:hidden;
 	margin:0 10px 0 0;
 	border-radius:33px;
+	font-size:12px;
 }
 .content-cate-title .icon-heart,
 .content-cate-title .text{
@@ -601,10 +616,10 @@ body{
 	height:22px;
 	line-height:22px;
 	margin-right:10px;
-	color:#999;
+	color:#666;
 }
 a.content-cate-list:hover{
-	color:#999!important;
+	color:#ff5c3f!important;
 	text-decoration:underline;
 }
 .fc{

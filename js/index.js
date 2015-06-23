@@ -216,8 +216,9 @@ slider.prototype = {
 					if(self.goes == self.step-1){
 						q = self.slw - self.objw * self.step;
 						self.s += q;
-						if(self.locations){					
-							self.ctrR.children().html("查看更多").addClass("text");
+						if(self.locations){
+							self.ctrR.addClass('text')
+							self.ctrR.children().html("查看更多");
 						}else{
 							self.ctrR.addClass('un');
 						}
@@ -237,8 +238,8 @@ slider.prototype = {
 		this.ctrL.addClass("un");
 		this.ctrR.removeClass("un");
 		if(self.locations){
-			self.ctrR.attr("href","javascript:;");
-			self.ctrR.children().html("").removeClass("text");
+			self.ctrR.attr("href","javascript:;").removeClass("text");
+			self.ctrR.children().html("");
 		}
 		if($("body").width() < 1200){
 			if(!this.re980){
@@ -386,11 +387,14 @@ $(function(){
 		var list = par.children(".box-list-ul");
 		var p = par.children(".box-list-p");
 
-		p.off().on({
-			"click":function(){
+		par.off().on({
+			"mouseenter":function(){
 				list.show();
+			},
+			"mouseleave":function(){
+				list.hide();
 			}
-		});
+		})
 		list.children().off().on({
 			"mouseenter":function(){
 				$(this).addClass("cur").siblings().removeClass("cur")
@@ -409,10 +413,5 @@ $(function(){
 				}
 			}
 		});
-		par.off().on({
-			"mouseleave":function(){
-				list.hide();
-			}
-		})
 	})
 })
