@@ -1,0 +1,5 @@
+/* ie9 不支持 css3 animation transition */
+.content-cate-title:hover i,
+.content-cate-title:hover span{
+	opacity:1;
+}

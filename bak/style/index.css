@@ -5,12 +5,6 @@ body{
 .scenarized-shop a:hover{
 	color:#ff5c3f!important;
 }
-.loading{
-	display:none;
-	width:40px;
-	height:80px;
-	background:url(../img/loading.gif) no-repeat center center;
-}
 .img-sprite{
 	display:block;
 	background:url(../img/img-sprite.png) no-repeat;
@@ -60,11 +54,6 @@ body{
 	width:12px;
 	height:10px;
 	background-position:-61px 0;
-}
-.icon-warn{
-	width:30px;
-	height:30px;
-	background-position:-70px -46px;
 }
 .t-overflow{
 	overflow:hidden;
@@ -406,19 +395,8 @@ body{
 .shop-col-list{
 	position:relative;
 	width:980px;
-	height:365px;
 	margin:10px auto 0;
-}
-.shop-col-list .loading{
-	position:absolute;
-	width:100%;
-	height:100%;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	background-color:#f8f8f8;
-	background-position:center 100px;
+	padding-bottom:25px;
 }
 .shop-col-list .slider-left,
 .shop-col-list .slider-right{
@@ -452,25 +430,12 @@ body{
 .shop-col-list .un:hover{
 	background:#ddd;
 }
-.shop-col-list .shop-col-unstore{
-	display:none;
-	padding-top:100px;
-	text-align:center;
-}
-.shop-col-list .shop-col-unstore .icon-warn{
-	margin:0 auto 20px;
-}
-.shop-col-list .shop-col-unstore .unstore-text{
-	height:20px;
-	line-height:20px;
-}
 .shop-col-list .shop-col-slider{
 	position:relative;
 	z-index:1;
 	width:980px;
 	height:330px;
 	overflow:hidden;
-	padding-bottom:25px;
 }
 .shop-col-list .slider-left i,
 .shop-col-list .slider-right i{
@@ -545,19 +510,11 @@ body{
 	line-height:18px;
 	font-weight:500;
 	font-size:12px;
-	-webkit-transition:height 0.3s ease;
-	-moz-transition:height 0.3s ease;
-	-ms-transition:height 0.3s ease;
-	-o-transition:height 0.3s ease;
-	transition:height 0.3s ease;
 }
 .list-pro .pro-name a{
 	color:#666;
 }
-.list-pro .t-hover{
-	height:36px;
-	overflow:hidden;
-}
+
 .list-pro .pro-d1,
 .list-pro .pro-d2{
 	margin-top:10px;
@@ -606,22 +563,6 @@ body{
 .list-pro .add-cart:hover{
 	background:#ff5c3f;
 	color:#fff!important;
-}
-.list-pro .unstore{
-	float:right;
-	_display:inline;
-	width:78px;
-	height:20px;
-	line-height:20px;
-	text-align:center;
-	border-radius:2px;
-	color:#aaa;
-	border:1px solid #ccc;
-	background:#fff;
-	cursor:default;
-}
-.list-pro .unstore:hover{
-	color:#aaa!important;
 }
 .shop-col-list .slider-trigger{
 	position:absolute;

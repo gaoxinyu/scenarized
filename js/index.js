@@ -13,17 +13,18 @@ var isHandle = {
     }
 };
 
-var slider = function(obj,ctrL,ctrR,setTri,types){
-	this.obj = $(obj) || null;						
-	this.sl = this.obj.children();								
-	this.ctrL = this.obj.siblings(ctrL);			
-	this.ctrR = this.obj.siblings(ctrR);			
-	this.flag = true;								
-	this.setTri = setTri;							
-	this.slw = 0;									
-	this.goes = 0;									
-	this.step = 0;									
-	this.types = types || "nums";				
+var slider = function(obj,ctrL,ctrR,setTri,types,unstore){
+	this.obj = $(obj) || null;
+	this.sl = this.obj.children();
+	this.ctrL = this.obj.siblings(ctrL);
+	this.ctrR = this.obj.siblings(ctrR);
+	this.unstore = this.obj.siblings(unstore);
+	this.flag = true;
+	this.setTri = setTri;
+	this.slw = 0;
+	this.goes = 0;
+	this.step = 0;
+	this.types = types || "nums";
 	this.locations = null;
 	this.nums = null;
 	this.re980 = false;
@@ -33,46 +34,50 @@ var slider = function(obj,ctrL,ctrR,setTri,types){
 slider.prototype = {
 	init:function(){
 		if($("body").width() < 1200){
-			this.nums = this.obj.data("mins");
+			this.nums = this.obj.attr("data-mins");
 		}else{
-			this.nums = this.obj.data("maxs");
+			this.nums = this.obj.attr("data-maxs");
 		}
 		var self = this;
 		this.objw = this.obj.outerWidth(true);
 		this.chs = this.sl.children();
 		this.len = this.chs.length;
-		var k = [];
-		var w = 0;
-		this.chs.each(function(){
-			k.push($(this).outerWidth(true))
-		})
-		for(var i = 0; i < this.len; i++){
-			w+=k[i];
+		if(this.len > 0){
+			var k = [];
+			var w = 0;
+			this.chs.each(function(){
+				k.push($(this).outerWidth(true))
+			})
+			for(var i = 0; i < this.len; i++){
+				w+=k[i];
+			}
+			this.sl.width(w);
+			this.slw = this.sl.outerWidth();
+			switch(this.types){
+				case "width":
+					this.step = Math.ceil(parseInt(this.slw) / parseInt(this.objw));
+					this.tStep = Math.floor(parseInt(this.slw) / parseInt(this.objw));
+					break;
+				case "nums":
+					this.step = Math.ceil(this.len / this.nums);
+					this.tStep = Math.floor(this.len / this.nums);
+					break;
+			}
+		}else{
+			this.obj.hide();
+			this.unstore.show();
 		}
-		this.sl.width(w);
-		this.slw = this.sl.outerWidth();
-		switch(this.types){
-			case "width":
-				this.step = Math.ceil(parseInt(this.slw) / parseInt(this.objw));
-				this.tStep = Math.floor(parseInt(this.slw) / parseInt(this.objw));
-				break;
-			case "nums":
-				this.step = Math.ceil(this.len / this.nums);
-				this.tStep = Math.floor(this.len / this.nums);
-				break;
-		}
-
 		// 箭头
 		if(this.goes == 0){
 			this.ctrL.addClass("un");
 		}
 		this.setArr();
-		this.ctrL.off().on({
+		this.ctrL.bind({
 			"click":function(){
 				self.prevs();
 			}
 		})
-		this.ctrR.off().on({
+		this.ctrR.bind({
 			"click":function(){
 				self.nexts();
 			}
@@ -104,7 +109,7 @@ slider.prototype = {
 					this.ctrL.removeAttr("style");
 					this.ctrR.removeAttr("style");
 					if(this.len == 20){
-						this.locations = this.ctrR.data("locations")
+						this.locations = this.ctrR.attr("data-locations");
 					}
 				}
 				break;
@@ -128,7 +133,7 @@ slider.prototype = {
 			this.trigger.css({
 				"marginLeft": -self.trigger.width()/2
 			})
-			this.tric.off().on({
+			this.tric.bind({
 				"click":function(){
 					self.trigFun(this);
 					$(this).addClass("act").siblings().removeClass("act");
@@ -280,7 +285,7 @@ scrollTo.prototype = {
 	runs:function(){
 		var self = this;
 		this.pushText();
-		this.rec.children().off().on({
+		this.rec.children().bind({
 			"click":function(){
 				var i = $(this).index();
 				$(this).addClass("act").siblings().removeClass("act");
@@ -298,7 +303,7 @@ scrollTo.prototype = {
 		var self = this;
 		self.obj.each(function(){
 			self.pos.push($(this).offset().top);
-			self.t.push($(this).data("col"));
+			self.t.push($(this).attr("data-col"));
 		})
 	},
 	pushText:function(){
@@ -360,7 +365,7 @@ $(function(){
 	// 轮播
 	
 	$(".shop-col-slider").each(function(i){
-		new slider(this,".slider-left",".slider-right",true,"nums");
+		new slider(this,".slider-left",".slider-right",true,"nums",".shop-col-unstore");
 	})
 
 	new scrollTo(".scenarized-shop-col","[data-scrollTo='true']",".scenarized-shop");
@@ -387,7 +392,7 @@ $(function(){
 		var list = par.children(".box-list-ul");
 		var p = par.children(".box-list-p");
 
-		par.off().on({
+		par.bind({
 			"mouseenter":function(){
 				list.show();
 			},
@@ -395,7 +400,7 @@ $(function(){
 				list.hide();
 			}
 		})
-		list.children().off().on({
+		list.children().bind({
 			"mouseenter":function(){
 				$(this).addClass("cur").siblings().removeClass("cur")
 			},
@@ -423,4 +428,13 @@ $(function(){
 			$(this).removeClass("cur");
 		});
 	}
+
+	// 商品hover 商品名 显示全名，最多2行
+	$(".slider-list").each(function(){
+		$(this).delegate(".pro-info", "mouseenter", function(){
+			$(this).children(".pro-name").removeClass("t-overflow").addClass("t-hover");
+		}).delegate('.pro-info', 'mouseleave', function(event) {
+			$(this).children(".pro-name").removeClass("t-hover").addClass("t-overflow");
+		});
+	})
 })
